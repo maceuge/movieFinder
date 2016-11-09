@@ -199,6 +199,9 @@ class PeliculasController extends Controller
         return view('/premios', ['movies' => $movie]);
     }
 
+    public function validarlogin () {
+
+    }
 
 
 }

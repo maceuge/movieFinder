@@ -1,10 +1,12 @@
 <?php
-/*Route::get('/', function () {
-    return view('welcome');
-}); */
+Route::get('/', function () {
+    return view('login.login');
+});
+
+Route::post('/validarlogin', 'PeliculasController@validarlogin');
 
 //Route::get('showMovies', 'BestMoviesController@bestMovies');
-Route::get('/', 'PeliculasController@bestTen');
+Route::get('/bestten', 'PeliculasController@bestTen');
 Route::get('/movies', 'PeliculasController@search');
 Route::get('/movieDetail/{id}', 'PeliculasController@detalle');
 
