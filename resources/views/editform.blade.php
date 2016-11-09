@@ -21,12 +21,16 @@
                     <input class="form-control" type="text" name="length" value="{{ $movie->length }}" placeholder="Duracion">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="date" value="{{ $movie->release_date }}" placeholder="Fecha de Estreno">
+                    <input class="form-control" type="text" name="release_date" value="{{ $movie->release_date }}" placeholder="Fecha de Estreno">
                 </div>
                 <div class="form-group">
-                    <select class="form-control" name="genero">
+                    <select class="form-control" name="genre_id">
                         @foreach($generos as $genero)
-                            <option value="{{ $genero->id }}">{{ $genero->name }}</option>
+                            @if($genero->id == $movie->genre_id)
+                              <option value="{{ $genero->id }}" selected >{{ $genero->name }}</option>
+                            @else
+                              <option value="{{ $genero->id }}">{{ $genero->name }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>

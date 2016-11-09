@@ -98,18 +98,18 @@
                         <div class="form-group @if($errors->has('length')) has-error @else @endif">
                             <input class="form-control" type="number" name="length" value="{{ old('length') }}" placeholder="Duracion">
                         </div>
-                        @if($errors->has('date'))
-                            @foreach($errors->get('date') as $error)
+                        @if($errors->has('release_date'))
+                            @foreach($errors->get('release_date') as $error)
                                 <div class="text text-danger">{{ $error }}</div>
                             @endforeach
                         @endif
-                        <div class="form-group @if($errors->has('date')) has-error @else @endif">
-                            <input class="form-control" type="date" name="date" value="{{ old('date') }}">
+                        <div class="form-group @if($errors->has('release_date')) has-error @else @endif">
+                            <input class="form-control" type="date" name="release_date" value="{{ old('release_date') }}">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="genero">
+                            <select class="form-control" name="genre_id">
                                 @foreach($generos as $genero)
-                                    <option value="{{ $genero->id }}" @if(old('genero') == $genero->id) selected @endif>{{ $genero->name }}</option>
+                                    <option value="{{ $genero->id }}" @if(old('genre_id') == $genero->id) selected @endif>{{ $genero->name }}</option>
                                 @endforeach
                             </select>
                         </div>

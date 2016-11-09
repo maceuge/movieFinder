@@ -125,8 +125,9 @@ class PeliculasController extends Controller
         $movie->title = $request->input('title');
         $movie->rating = $request->input('rating');
         $movie->awards = $request->input('awards');
-        $movie->release_date = $request->input('date');
+        $movie->release_date = $request->input('release_date');
         $movie->length = $request->input('length');
+        $movie->genre_id = $request->input('genre_id');
 
         $movie->save();
         return redirect('/peliculas');

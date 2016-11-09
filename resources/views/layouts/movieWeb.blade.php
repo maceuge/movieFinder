@@ -15,9 +15,12 @@
         .title {
             color: #7a43b6;
             font-family: 'Raleway', sans-serif;
-            font-size: 25px;
+            font-size: 22px;
             font-weight: 600;
             height: 100vh;
+        }
+        .color {
+            color: #009926;
         }
     </style>
 </head>
@@ -33,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><span class="title">MovieFinder</span></a>
+            <a class="navbar-brand" href="/"><span class="title">Movie<span class="color">Finder</span></span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
