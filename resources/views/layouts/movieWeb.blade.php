@@ -13,18 +13,13 @@
 
     <style>
         .title {
-            color: #636b6f;
+            color: #7a43b6;
             font-family: 'Raleway', sans-serif;
-            font-weight: 300;
-            font-size: 29px;
+            font-size: 25px;
+            font-weight: 600;
             height: 100vh;
         }
-
-        .title:hover {
-            color: #7a43b6;
-        }
     </style>
-
 </head>
 <body>
 
@@ -38,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><span class="title"><b>L</b>aravel</span></a>
+            <a class="navbar-brand" href="/"><span class="title">MovieFinder</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,7 +45,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="query" placeholder="Buscar Pelicula...">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
                             </span>
                     </div>
                 </form>

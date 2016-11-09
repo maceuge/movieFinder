@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\Genre;
+use App\Http\Requests\CreateMovieRequest;
 
 class PeliculasController extends Controller
 {
@@ -28,8 +29,11 @@ class PeliculasController extends Controller
     }
 
     public function detalle($id) {
-        $builder = \App\Movie::find($id);
-        return view('/movieDetail', ['movies' => $builder]);
+        $movie = \App\Movie::find($id);
+        if (!$movie) {
+            abort(404);
+        }
+        return view('/movieDetail', ['movies' => $movie]);
     }
 
     public function todasId () {
@@ -45,7 +49,7 @@ class PeliculasController extends Controller
             '%'
         )->paginate(5);*/
 
-        $movie = Movie::paginate(10);
+        $movie = Movie::paginate(7);
         $generos = Genre::all();
 
         return view('/peliculas', [
@@ -59,18 +63,42 @@ class PeliculasController extends Controller
         return view('/formulario', ['generos' => $generos]);
     }
 
-    public function addFilm (Request $request) {
-        /*$data = $request->only(['title', 'rating', 'awards', 'date', 'lenght']);
-        $film = Movie::create($data);*/
+    public function addFilmRequest (CreateMovieRequest $request) {
+        $data = $request->only(['title', 'rating', 'awards', 'release_date', 'length', 'genre_id']);
+        $film = Movie::create($data);
+        $film->save();
+        return redirect('/peliculas');
+    }
 
-        $film = Movie::create([
+    public function addFilm (Request $request) {
+
+        $valid = \Validator::make(
+            $request->all(),
+            [
+            'title' => 'required',
+            'rating' => 'required|numeric|between:0,10',
+            'awards' => 'required|numeric|between:0,10',
+            'length' => 'required|numeric|between:10,400',
+            'release_date' => 'required',
+            'genre_id' => 'required'
+            ]
+        );
+
+        if ($valid->fails()) {
+            return redirect('/addmovie')->withInput()->withErrors($valid->errors());
+        }
+
+        $data = $request->only(['title', 'rating', 'awards', 'release_date', 'length', 'genre_id']);
+        $film = Movie::create($data);
+
+        /*$film = Movie::create([
             'title' => $request->input('title'),
             'rating' => $request->input('rating'),
             'awards' => $request->input('awards'),
-            'release_date' => $request->input('date'),
+            'release_date' => $request->input('release_date'),
             'length' => $request->input('length'),
-            'genre_id' => $request->input('genero')
-        ]);
+            'genre_id' => $request->input('genre_id')
+        ]);*/
 
         $film->save();
         return redirect('/peliculas');

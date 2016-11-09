@@ -23,8 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
+        //  aqui se graba el pattern de las rutas parque no manden texto si es un id
+        //Route::pattern('id', '\d+');
         parent::boot();
     }
 

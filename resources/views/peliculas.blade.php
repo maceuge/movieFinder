@@ -51,7 +51,7 @@
                 @endforelse
                 </tbody>
             </table>
-            {{-- $movie->links() --}}
+            <div class="center-block">{{ $movies->links() }}</div>
         </div>
     </div>
 
@@ -64,31 +64,55 @@
                     <h4 class="modal-title" id="myModalLabel">Ingresar Pelicula</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/agregar" class="form">
+                    <form action="/agregar" class="form" method="post">
                         {{ csrf_field() }}
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="title" placeholder="Titulo">
+                        @if($errors->has('title'))
+                            @foreach($errors->get('title') as $error)
+                                <div class="text text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                        <div class="form-group @if($errors->has('title')) has-error @else @endif">
+                            <input class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Titulo">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="rating" placeholder="Rating">
+                        @if($errors->has('rating'))
+                            @foreach($errors->get('rating') as $error)
+                                <div class="text text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                        <div class="form-group @if($errors->has('rating')) has-error @else @endif">
+                            <input class="form-control" type="number" name="rating" value="{{ old('rating') }}" placeholder="Rating">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="awards" placeholder="Awards">
+                        @if($errors->has('awards'))
+                            @foreach($errors->get('awards') as $error)
+                                <div class="text text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                        <div class="form-group @if($errors->has('awards')) has-error @else @endif">
+                            <input class="form-control" type="number" name="awards" value="{{ old('awards') }}" placeholder="Awards">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="length" placeholder="Duracion">
+                        @if($errors->has('length'))
+                            @foreach($errors->get('length') as $error)
+                                <div class="text text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                        <div class="form-group @if($errors->has('length')) has-error @else @endif">
+                            <input class="form-control" type="number" name="length" value="{{ old('length') }}" placeholder="Duracion">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="date">
+                        @if($errors->has('date'))
+                            @foreach($errors->get('date') as $error)
+                                <div class="text text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                        <div class="form-group @if($errors->has('date')) has-error @else @endif">
+                            <input class="form-control" type="date" name="date" value="{{ old('date') }}">
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="genero">
                                 @foreach($generos as $genero)
-                                    <option value="{{ $genero->id }}">{{ $genero->name }}</option>
+                                    <option value="{{ $genero->id }}" @if(old('genero') == $genero->id) selected @endif>{{ $genero->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-success">Agregar</button>
