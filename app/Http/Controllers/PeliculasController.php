@@ -154,7 +154,7 @@ class PeliculasController extends Controller
         $movie->length = $request->input('length');
 
         $movie->save();
-        return redirect('movies.peliculas');
+        return redirect('/movies/peliculas');
     }
 
     // funcion que edita la pelicula seleccionada

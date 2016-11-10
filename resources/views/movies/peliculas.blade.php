@@ -35,8 +35,9 @@
                                     <td><input class="form-control" type="text" name="awards" value="{{ $movie->awards }}" placeholder="Awards"></td>
                                     <td><input class="form-control" type="text" name="length" value="{{ $movie->length }}" placeholder="Duracion"></td>
                                     <td>
+                                        <a href="/movieList" class="btn btn-danger"><i class="fa fa-times-circle"></i></a>
                                         <button type="submit" class="btn btn-primary">Editar</button>
-                                        <button type="reset" class="btn btn-default"><i class="fa fa-times-circle"></i></button>
+
                                     </td>
                                 </tr>
                             </form>
@@ -47,7 +48,7 @@
                                 <td>{{ $movie->release_date }}</td>
                                 <td><span class="badge">{{ $movie->awards }}</span></td>
                                 <td>{{ $movie->length }}</td>
-                                <td style="width: 145px">
+                                <td style="width: 155px">
                                     <div class="btn-group" role="group" aria-label="...">
                                         <!--a href="/moviedetail/{{ $movie->id }}" class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
@@ -84,7 +85,7 @@
                                 <td>{{ $movie->release_date }}</td>
                                 <td><span class="badge">{{ $movie->awards }}</span></td>
                                 <td>{{ $movie->length }}</td>
-                                <td  style="width: 145px">
+                                <td  style="width: 155px">
                                     <div class="btn-group" role="group" aria-label="...">
                                         <!--a href="/moviedetail/{{ $movie->id }}" class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
