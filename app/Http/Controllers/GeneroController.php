@@ -12,7 +12,7 @@ class GeneroController extends Controller
         $movie = Movie::find($id);
         $genero = $movie->genre->name;
 
-        return view('/generopel', [
+        return view('/generos/generopel', [
             'movie' => $movie,
             'genero' => $genero
         ]);
@@ -20,7 +20,7 @@ class GeneroController extends Controller
 
     public  function todos () {
         $generos = Genre::all();
-        return view('/generos', ['generos' => $generos]);
+        return view('/generos/generos', ['generos' => $generos]);
     }
 
     public function buscarpelis (Request $request) {
@@ -28,7 +28,7 @@ class GeneroController extends Controller
         $gen = Genre::find($id);
         $pelis = $gen->movies;
 
-        return view('/peligenero', ['pelis' => $pelis, 'genero' => $gen]);
+        return view('/generos/peligenero', ['pelis' => $pelis, 'genero' => $gen]);
 
     }
 }

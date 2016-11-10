@@ -34,7 +34,7 @@
         <p class="text-info">Puede volver a intentar con la busqueda o ...</p>
         <div class="clearfix"></div>
         <div class="col-lg-8  col-lg-offset-2">
-            <form action="/movies" method="get">
+            <form action="/searchmovies" method="get">
                 <div class="input-group">
                     <input type="text" placeholder="Buscar Pelicula..." class="form-control" />
                     <span class="input-group-btn">
@@ -63,7 +63,7 @@
         <div class="col-lg-6  col-lg-offset-3">
             <div class="btn-group btn-group-justified">
                 <a href="/" class="btn btn-info">Pagina Principal</a>
-                <a href="/peliculas" class="btn btn-success">Lista de Peliculas</a>
+                <a href="/movieList" class="btn btn-success">Lista de Peliculas</a>
             </div>
         </div>
     </div> <!-- fin del div columnas -->

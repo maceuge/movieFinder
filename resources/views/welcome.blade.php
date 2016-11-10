@@ -1,4 +1,4 @@
-@extends('layouts.movieWeb')
+@extends('layouts.home')
 @section('welcome')
             <div class="content">
                 <div class="title m-b-md">

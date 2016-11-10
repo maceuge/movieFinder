@@ -1,5 +1,5 @@
-@extends('layouts.movieWeb')
-@section('bestMovies')
+@extends('layouts.home')
+@section('content')
 
 <div class="container">
     <div class="row">

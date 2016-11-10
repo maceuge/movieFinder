@@ -1,12 +1,12 @@
-@extends('layouts.movieWeb')
-@section('formpeli')
+@extends('layouts.home')
+@section('content')
 
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2>Ingresar Pelicula</h2>
 
-            <form action="/agregar" class="form" method="post">
+            <form action="/addmovie" class="form" method="post">
                 {{ csrf_field() }}
                 @if($errors->has('title'))
                     @foreach($errors->get('title') as $error)

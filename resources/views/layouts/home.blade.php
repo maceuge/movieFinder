@@ -17,12 +17,17 @@
             font-family: 'Raleway', sans-serif;
             font-size: 22px;
             font-weight: 600;
-            height: 100vh;
         }
         .color {
             color: #009926;
         }
     </style>
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 </head>
 <body>
 
@@ -44,7 +49,7 @@
             <ul class="nav navbar-nav">
             </ul>
 
-                <form class="navbar-form navbar-left" action="/movies" method="get">
+                <form class="navbar-form navbar-left" action="/searchmovies" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control" name="query" placeholder="Buscar Pelicula...">
                         <span class="input-group-btn">
@@ -56,7 +61,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text"></i> Colecciones<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text fa-lg"></i> Colecciones<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('/primero') }}">Primero</a></li>
                         <li><a href="{{ url('/ordtit/title') }}">Ordenar por Titulo</a></li>
@@ -69,8 +74,25 @@
                         <li><a href="{{ url('/generos') }}">Pelis por Genero</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ url('/peliculas') }}"><i class="fa fa-list"></i> Lista Peliculas</a></li>
-                <li><a href="{{ url('/addmovie') }}"><i class="fa fa-plus-circle"></i> Pelicula</a></li>
+                <li><a href="{{ url('/bestten') }}"><i class="fa fa-trophy fa-lg"></i> 10 Mejores</a></li>
+                <li><a href="{{ url('/movieList') }}"><i class="fa fa-list fa-lg"></i> Lista Peliculas</a></li>
+                <li><a href="{{ url('/addmovieform') }}"><i class="fa fa-plus-circle fa-lg"></i> Pelicula</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-user-circle-o fa-lg"></i>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Salir
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -92,24 +114,17 @@
             </div -->
     <br>
 {{-- contenido --}}
-
-    @yield('bestMovies')
-    @yield('buscador')
-    @yield('detalleMovie')
-    @yield('peliculas')
-    @yield('formpeli')
-    @yield('editform')
-    @yield('peliprem')
-    @yield('generopel')
-    @yield('generos')
-    @yield('pelisgenero')
-    @yield('container')
-
+    @yield('content')
 {{-- contenido --}}
 
-    </div>
+</div>
+
+<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<!--script src="/js/app.js"></script -->
 <!-- script src="{{-- asset('assets/global/plugins/amcharts/amcharts/serial.js') --}}" type="text/javascript"></script -->
 </body>
 </html>

@@ -1,5 +1,5 @@
-@extends('layouts.movieWeb')
-@section('editform')
+@extends('layouts.home')
+@section('content')
 
 
     <div class="row">

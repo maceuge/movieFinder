@@ -1,4 +1,4 @@
-@extends('layouts.movieWeb')
+@extends('layouts.home')
 @section('generopel')
 
     <div class="row">

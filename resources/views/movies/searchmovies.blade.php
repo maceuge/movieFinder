@@ -1,5 +1,5 @@
-@extends('layouts.movieWeb')
-@section('buscador')
+@extends('layouts.home')
+@section('content')
 
 
     <div class="row">
@@ -7,7 +7,7 @@
             <h4>Resultados de la Busqueda:</h4>
             <ul>
                 @forelse($movies as $movie)
-                    <li><a href="/movieDetail/{{ $movie->id }}">{{ $movie->title }}</a></li>
+                    <li><a href="/moviedetail/{{ $movie->id }}">{{ $movie->title }}</a></li>
                 @empty
                     <h4>No se encontraron los resultados</h4>
                 @endforelse

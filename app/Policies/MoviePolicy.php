@@ -19,7 +19,7 @@ class MoviePolicy
      */
     public function view(User $user, Movie $movie)
     {
-        return $movie->rating > 6;
+       // return $movie->rating > 6;
     }
 
     /**
@@ -30,7 +30,7 @@ class MoviePolicy
      */
     public function create(User $user)
     {
-       return $user->email == 'jack@gmail.com';
+      // return $user->email == 'jack@gmail.com';
     }
 
     /**

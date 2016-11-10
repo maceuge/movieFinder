@@ -27,9 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         // aca creo el nombre de la compuerta y le asigno la validacion al usuario
-        $gate->define('movie-create', function(User $user){
+       /* $gate->define('movie-create', function(User $user){
             return $user->email == 'magik@gmail.com';
-        });
+        });*/
 
         //
     }
