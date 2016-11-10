@@ -27,6 +27,7 @@
 
     <div class="container" style="margin-top: 100px;">
         <h1 class="title text-center">Login to <span class="color">Laravel</span></h1>
+        <br>
         {{-- contenido --}}
 
         @yield('container')

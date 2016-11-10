@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\Genre;
@@ -42,13 +43,9 @@ class PeliculasController extends Controller
     }
 
     public  function todas () {
+        $user = \Auth::user(); // aqui trae al usuario si esta logeado
        // $movie = Movie::all();
-       /* $movie = Movie::where(
-            'title',
-            'LIKE',
-            '%'
-        )->paginate(5);*/
-
+       /* $movie = Movie::where('title', 'LIKE', '%')->paginate(5);*/
         $movie = Movie::paginate(7);
         $generos = Genre::all();
 
@@ -105,7 +102,12 @@ class PeliculasController extends Controller
        // return redirect()->action('PeliculasController@all'); es solo un ejemplo
     }
 
-    public function borrar ($id) {
+    public function borrar ($id, Gate $gate) {
+
+        if (!$gate->allows('movie-create')) {
+            abort(404);
+        }
+
         $movie = Movie::find($id);
         $movie->delete();
         return redirect('/peliculas');
@@ -141,7 +143,7 @@ class PeliculasController extends Controller
     }
 
     public function ordenar ($ord) {
-        $movie = Movie::all();
+        $movie = Movie::paginate(7);
         $movie = $movie->sortBy($ord);
         $generos = Genre::all();
 

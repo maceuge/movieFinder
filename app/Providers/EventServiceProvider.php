@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
+            'Illuminate\Auth\Events\Registered', // aqui va la ruta de mi php que tiene lo que va hacer el evento
         ],
     ];
 
