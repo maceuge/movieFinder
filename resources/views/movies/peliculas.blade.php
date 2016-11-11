@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Lista de Peliculas
+            <h1><i class="fa fa-film fa-lg"></i> Lista de Peliculas
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-plus-circle fa-lg"></i>
                 </button>

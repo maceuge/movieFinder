@@ -114,12 +114,12 @@ class PeliculasController extends Controller
     // tiene una condicion programada para que un usuario espesifico pueda borrar la pelicula
     public function borrar ($id, Gate $gate) {
 
-        if (!$gate->allows('movie-create')) {
+       /* if (!$gate->allows('movie-create')) {
             abort(404);
-        }
+        }*/
         $movie = Movie::find($id);
         $movie->delete();
-        return redirect('/movies/peliculas');
+        return redirect('/movieList');
     }
 
     // funcion editar una pelicula que trae el formulario de edicion con todos sus campos
@@ -154,7 +154,7 @@ class PeliculasController extends Controller
         $movie->length = $request->input('length');
 
         $movie->save();
-        return redirect('/movies/peliculas');
+        return redirect('/movieList');
     }
 
     // funcion que edita la pelicula seleccionada
@@ -183,7 +183,7 @@ class PeliculasController extends Controller
     }
 
     public function ordenar ($ord) {
-        $movie = Movie::paginate(7);
+        $movie = Movie::all();
         $movie = $movie->sortBy($ord);
         $generos = Genre::all();
 
@@ -232,6 +232,14 @@ class PeliculasController extends Controller
 
 
 
+    public function apiIndex () {
+        //return Movie::with('genre')->get();
+        return Movie::with('genre')->paginate(10);
+    }
+
+    public function apiShow ($id) {
+        return Movie::find($id);
+    }
 
 
 
