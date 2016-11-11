@@ -25,7 +25,7 @@ class Movie extends Model
     }
 
     public function getUrlAttribute (){
-        return "/movies/" .$this->id;
+        return "http://localhost:8000/moviedetail/" .$this->id;
     }
 
     public function getHasAwardsAttribute () {

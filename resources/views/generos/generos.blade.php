@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('generos')
+@section('content')
 
 
     <div class="row">

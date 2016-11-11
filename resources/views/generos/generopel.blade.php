@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('generopel')
+@section('content')
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

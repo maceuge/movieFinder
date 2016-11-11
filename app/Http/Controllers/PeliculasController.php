@@ -78,7 +78,7 @@ class PeliculasController extends Controller
         ]);*/
 
         $film->save();
-        return redirect('/movies/peliculas');
+        return redirect('/movieList');
         // return redirect()->action('PeliculasController@all'); es solo un ejemplo de redireccionar a otro controller
     }
 
@@ -88,7 +88,7 @@ class PeliculasController extends Controller
         $data = $request->only(['title', 'rating', 'awards', 'release_date', 'length', 'genre_id']);
         $film = Movie::create($data);
         $film->save();
-        return redirect('/movies/peliculas');
+        return redirect('/movieList');
     }
 
     // funcion de busqueda de las peliculas que recibe por el input del buscador
@@ -168,7 +168,7 @@ class PeliculasController extends Controller
         $movie->genre_id = $request->input('genre_id');
 
         $movie->save();
-        return redirect('/movies/peliculas');
+        return redirect('/movieList');
     }
 
 
@@ -232,17 +232,28 @@ class PeliculasController extends Controller
 
 
 
-    public function apiIndex () {
-        //return Movie::with('genre')->get();
-        return Movie::with('genre')->paginate(10);
-    }
-
-    public function apiShow ($id) {
-        return Movie::find($id);
-    }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*******************************************************************/
 
     // funciones sin uso solo para prueba
     /*

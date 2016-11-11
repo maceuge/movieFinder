@@ -69,9 +69,10 @@
                         <li><a href="{{ url('/ordazar') }}">Ordenar al azar</a></li>
                         <li><a href="{{ url('/duracionm') }}">Duracion +90 min</a></li>
                         <li><a href="{{ url('/duracionmr') }}">Duracion +90&r5</a></li>
-                        <li disabled="disabled"><a href="{{ url('/premios') }}">Premios por Minuto</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ url('/generos') }}">Pelis por Genero</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ url('/api/moviesapi') }}">Format JASON</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url('/bestten') }}"><i class="fa fa-trophy fa-lg"></i> 10 Mejores</a></li>
