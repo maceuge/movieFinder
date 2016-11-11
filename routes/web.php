@@ -1,17 +1,13 @@
 <?php
 
-use \App\Notifications\NotiferController;
-
 
 /*Route::get('/', function () {
     return view('login.login');
 }); */ // Ruta ejemplo del Welcome
 
-Route::get('/notif', function () {
-    $user = \App\User::first();
-    $movie = \App\Movie::first();
-    $user->notify(new NotiferController($movie));
-});
+Route::get('/notif', 'NotificationContoller@notifMovie');
+
+
 
 // -- Este es un middleware que
 Route::group(['middleware' => ['auth']], function () {

@@ -73,6 +73,8 @@
                         <li><a href="{{ url('/generos') }}">Pelis por Genero</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ url('/api/moviesapi') }}">Format JASON</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ url('/notif') }}"><i class="fa fa-paper-plane"></i> Enviar Notificacion</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url('/bestten') }}"><i class="fa fa-trophy fa-lg"></i> 10 Mejores</a></li>
