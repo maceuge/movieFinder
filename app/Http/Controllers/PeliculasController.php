@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\NotifiNewFilm;
+use App\User;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use App\Movie;
@@ -78,6 +80,12 @@ class PeliculasController extends Controller
         ]);*/
 
         $film->save();
+
+        // voy a notificar al cliente que se ingreso una nueva pelicula
+        $user = User::find(3);
+        $movie = $request->input('title');
+        $user->notify(new NotifiNewFilm($movie));
+
         return redirect('/movieList');
         // return redirect()->action('PeliculasController@all'); es solo un ejemplo de redireccionar a otro controller
     }

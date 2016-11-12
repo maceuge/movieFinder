@@ -7,8 +7,6 @@
 
 Route::get('/notif', 'NotificationContoller@notifMovie');
 
-
-
 // -- Este es un middleware que
 Route::group(['middleware' => ['auth']], function () {
 
