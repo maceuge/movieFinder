@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Access\Gate;
 //use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -27,9 +28,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         // aca creo el nombre de la compuerta y le asigno la validacion al usuario
-       /* $gate->define('movie-create', function(User $user){
-            return $user->email == 'magik@gmail.com';
-        });*/
+        $gate->define('movie-delete', function(User $user){
+            return $user->email == 'maceuge@icloud.com';
+        });
 
         //
     }

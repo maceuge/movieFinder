@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Movie;
 
-class NotifiNewFilm extends Notification
+class Avisopelicula extends Notification
 {
     use Queueable;
 
@@ -49,7 +49,7 @@ class NotifiNewFilm extends Notification
         return (new MailMessage)
                     ->subject('Llego nueva pelicula')
                     ->line('No te pierdas en esta oportunidad de ver una nueva pelicula.')
-                    ->line('Pelicula:'. $novedad)
+                    ->line('Pelicula: &nbsp;&nbsp;&nbsp;'. $novedad)
                     ->action('Mirala Ahora', $url)
                     ->line('Gracias por elegir nuestro sitio!');
     }

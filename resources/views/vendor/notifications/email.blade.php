@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <style type="text/css" rel="stylesheet" media="all">
         /* Media Queries */
         @media only screen and (max-width: 500px) {
@@ -12,17 +12,12 @@
                 width: 100% !important;
             }
         }
-
         .title {
-            color: #7a43b6;
+            color: #ffffff;
             font-family: 'Raleway', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
+            font-size: 38px;
+            font-weight: 200;
         }
-        .color {
-            color: #009926;
-        }
-
     </style>
 </head>
 
@@ -31,8 +26,8 @@
 $style = [
     /* Layout ------------------------------ */
 
-    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;',
-    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #b3ccff;', // orig color #F2F4F6
+    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #222222;',
+    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #313a45;', // orig color #F2F4F6
 
     /* Masthead ----------------------- */
 

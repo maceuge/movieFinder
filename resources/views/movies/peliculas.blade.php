@@ -8,15 +8,15 @@
                     <i class="fa fa-plus-circle fa-lg"></i>
                 </button>
             </h1>
-            <table class="table table-striped table-hover">
-                <thead>
+            <table class="table table-bordered table-hover">
+                <thead class="tithead text-center">
                 <tr>
-                    <td><h4><b>Titulo</b></h4></td>
-                    <td><h4><b>Rating</b></h4></td>
-                    <td><h4><b>Date</b></h4></td>
-                    <td><h4><b>Awards</b></h4></td>
-                    <td><h4><b>Duracion</b></h4></td>
-                    <td><h4><b>Accion</b></h4></td>
+                    <td>Titulo</td>
+                    <td>Rating</td>
+                    <td>Date</td>
+                    <td>Awards</td>
+                    <td>Duracion</td>
+                    <td>Accion</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,7 +116,7 @@
 
                 </tbody>
             </table>
-            <div class="center-block">{{-- $movies->links() --}}</div>
+            <div class="center-block">{{ $movies->links() }}</div>
         </div>
     </div>
 
@@ -124,7 +124,7 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header ">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Ingresar Pelicula</h4>
                 </div>
@@ -145,7 +145,7 @@
                             @endforeach
                         @endif
                         <div class="form-group @if($errors->has('rating')) has-error @else @endif">
-                            <input class="form-control" type="number" name="rating" value="{{ old('rating') }}" placeholder="Rating">
+                            <input class="form-control" type="text" name="rating" value="{{ old('rating') }}" placeholder="Rating">
                         </div>
                         @if($errors->has('awards'))
                             @foreach($errors->get('awards') as $error)
@@ -153,7 +153,7 @@
                             @endforeach
                         @endif
                         <div class="form-group @if($errors->has('awards')) has-error @else @endif">
-                            <input class="form-control" type="number" name="awards" value="{{ old('awards') }}" placeholder="Awards">
+                            <input class="form-control" type="text" name="awards" value="{{ old('awards') }}" placeholder="Awards">
                         </div>
                         @if($errors->has('length'))
                             @foreach($errors->get('length') as $error)
@@ -161,7 +161,7 @@
                             @endforeach
                         @endif
                         <div class="form-group @if($errors->has('length')) has-error @else @endif">
-                            <input class="form-control" type="number" name="length" value="{{ old('length') }}" placeholder="Duracion">
+                            <input class="form-control" type="text" name="length" value="{{ old('length') }}" placeholder="Duracion">
                         </div>
                         @if($errors->has('release_date'))
                             @foreach($errors->get('release_date') as $error)

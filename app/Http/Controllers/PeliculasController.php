@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Notifications\NotifiNewFilm;
+use App\Notifications\Notifnuevapeli;
 use App\User;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use App\Movie;
 use App\Genre;
 use App\Http\Requests\CreateMovieRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PeliculasController extends Controller
 {
@@ -26,8 +27,8 @@ class PeliculasController extends Controller
     // funcion que trae la lista de todas las peliculas
     public  function movieList () {
         // $user = \Auth::user(); // aqui trae al usuario si esta logeado
-         $movie = Movie::all();
-        //$movie = Movie::paginate(7);
+        // $movie = Movie::all();
+        $movie = Movie::paginate(7);
         $generos = Genre::all();
 
         return view('/movies/peliculas', [
@@ -82,9 +83,10 @@ class PeliculasController extends Controller
         $film->save();
 
         // voy a notificar al cliente que se ingreso una nueva pelicula
-        $user = User::find(3);
-        $movie = $request->input('title');
-        $user->notify(new NotifiNewFilm($movie));
+        $user = Auth::user();
+        $movie = Movie::all();
+        $lastmovie = $movie->last();
+        $user->notify(new Notifnuevapeli($lastmovie));
 
         return redirect('/movieList');
         // return redirect()->action('PeliculasController@all'); es solo un ejemplo de redireccionar a otro controller
@@ -121,10 +123,9 @@ class PeliculasController extends Controller
     // funcion borrar la pelicula dentro de la lista de peliculas
     // tiene una condicion programada para que un usuario espesifico pueda borrar la pelicula
     public function borrar ($id, Gate $gate) {
-
-       /* if (!$gate->allows('movie-create')) {
-            abort(404);
-        }*/
+        if ($gate->allows('movie-delete')) {
+            abort(403);
+        }
         $movie = Movie::find($id);
         $movie->delete();
         return redirect('/movieList');
@@ -143,7 +144,8 @@ class PeliculasController extends Controller
     // funcion editar una pelicula sobre las tablas de los campos
     public function editarlinea ($id) {
         $linea = Movie::find($id);
-        $movies = Movie::all();
+        //$movies = Movie::all();
+        $movies = Movie::paginate(7);
         $generos = Genre::all();
 
         return view('/movies/peliculas', [
@@ -181,19 +183,18 @@ class PeliculasController extends Controller
 
 
     // finciones varias para ordenar la lista de peliculas
-
-
     public  function primero () {
         $movie = Movie::all();
         $movie = $movie->first();
-
         return view('/movies/moviedetail', ['movies' => $movie]);
     }
 
     public function ordenar ($ord) {
-        $movie = Movie::all();
-        $movie = $movie->sortBy($ord);
+        //$movie = Movie::all()->sortBy($ord)->paginate(7);
+        $movie = Movie::all()->sortBy($ord);
+        $movie = $movie->paginate(7);
         $generos = Genre::all();
+        //$generos = $generos->paginate(7);
 
         return view('/movies/peliculas', [
             'movies' => $movie,

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Movies</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -20,6 +20,20 @@
         }
         .color {
             color: #009926;
+        }
+
+        body {
+            background-color: #e2e2e2;
+        }
+        .tithead {
+            color: #0D3349;
+            font-family: 'Raleway', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .table-bordered {
+            border-color: #636163;
         }
     </style>
     <!-- Scripts -->
@@ -75,6 +89,7 @@
                         <li><a href="{{ url('/api/moviesapi') }}">Format JASON</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ url('/notif') }}"><i class="fa fa-paper-plane"></i> Enviar Notificacion</a></li>
+                        <li><a href="{{ url('/notislack') }}"><i class="fa fa-slack"></i> Enviar Slack</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url('/bestten') }}"><i class="fa fa-trophy fa-lg"></i> 10 Mejores</a></li>
@@ -101,7 +116,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container" style="margin-top: 60px;">
+<div class="container" style="margin-top: 40px;">
      <!-- div class="row">
           <div class="col-md-6 col-md-offset-3">
                <h3 class="text-center">Buscar Pelicula</h3>

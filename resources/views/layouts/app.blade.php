@@ -12,7 +12,11 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
+    <style>
+        body {
+            background-color:#252b34 ;
+        }
+    </style>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

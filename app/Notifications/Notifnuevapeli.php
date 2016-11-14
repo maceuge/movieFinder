@@ -2,26 +2,27 @@
 
 namespace App\Notifications;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Movie;
+use \App\Movie;
 
-class NotifiNewFilm extends Notification
+class Notifnuevapeli extends Notification
 {
     use Queueable;
 
-    protected $movie;
+    protected $lastmovie;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($movie)
+    public function __construct(Movie $lastmovie)
     {
-        $this->movie = $movie;
+        $this->lastmovie = $lastmovie;
     }
 
     /**
@@ -43,12 +44,25 @@ class NotifiNewFilm extends Notification
      */
     public function toMail($notifiable)
     {
-        $novedad = $this->movie;
+        $film = $this->lastmovie->title;
+        $rating = $this->lastmovie->rating;
+        $fecha = $this->lastmovie->release_date;
+        //$fechaestreno = Carbon::createFromDate('dd-mm-YYYY', $fecha);
+        //$fechaestreno = Carbon::now($fecha);
+
+        $duracion = $this->lastmovie->length;
+        $genre = $this->lastmovie->genre->name;
+        $url = url('http://localhost:8000/moviedetail/'.$this->lastmovie->id);
+
         return (new MailMessage)
-            ->subject('Llego nueva pelicula')
+            ->subject('Llego el Gran Estreno')
             ->line('No te pierdas en esta oportunidad de ver una nueva pelicula.')
-            ->line('Pelicula:'. $novedad)
-            ->action('Mirala Ahora', '/movieList')
+            ->line('Pelicula: &nbsp;'.$film)
+            ->line('Rating: &nbsp;'.$rating)
+            ->line('Fecha de Estreno: &nbsp;'.$fecha)
+            ->line('Duracion: &nbsp;'.$duracion)
+            ->line('Genero: &nbsp;'.$genre)
+            ->action('Mirala Ahora', $url)
             ->line('Gracias por elegir nuestro sitio!');
     }
 

@@ -10,11 +10,11 @@ class GeneroController extends Controller
 {
     public function ver ($id) {
         $movie = Movie::find($id);
-        $genero = $movie->genre->name;
+        //$genero = $movie->genre->name;
 
         return view('/generos/generopel', [
             'movie' => $movie,
-            'genero' => $genero
+            //'genero' => $genero
         ]);
     }
 

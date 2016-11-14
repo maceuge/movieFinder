@@ -3,7 +3,7 @@
 
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-4 col-md-offset-4">
             <h2>Ingresar Pelicula</h2>
 
             <form action="/addmovie" class="form" method="post">
@@ -22,7 +22,7 @@
                     @endforeach
                 @endif
                 <div class="form-group @if($errors->has('rating')) has-error @else @endif">
-                    <input class="form-control" type="number" name="rating" value="{{ old('rating') }}" placeholder="Rating">
+                    <input class="form-control" type="text" name="rating" value="{{ old('rating') }}" placeholder="Rating">
                 </div>
                 @if($errors->has('awards'))
                     @foreach($errors->get('awards') as $error)
@@ -30,7 +30,7 @@
                     @endforeach
                 @endif
                 <div class="form-group @if($errors->has('awards')) has-error @else @endif">
-                    <input class="form-control" type="number" name="awards" value="{{ old('awards') }}" placeholder="Awards">
+                    <input class="form-control" type="text" name="awards" value="{{ old('awards') }}" placeholder="Awards">
                 </div>
                 @if($errors->has('length'))
                     @foreach($errors->get('length') as $error)
@@ -38,7 +38,7 @@
                     @endforeach
                 @endif
                 <div class="form-group @if($errors->has('length')) has-error @else @endif">
-                    <input class="form-control" type="number" name="length" value="{{ old('length') }}" placeholder="Duracion">
+                    <input class="form-control" type="text" name="length" value="{{ old('length') }}" placeholder="Duracion">
                 </div>
                 @if($errors->has('release_date'))
                     @foreach($errors->get('release_date') as $error)

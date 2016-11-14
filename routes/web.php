@@ -1,11 +1,11 @@
 <?php
-
-
 /*Route::get('/', function () {
     return view('login.login');
 }); */ // Ruta ejemplo del Welcome
 
 Route::get('/notif', 'NotificationContoller@notifMovie');
+Route::get('/notislack', 'NotificationContoller@slackmessage');
+Route::get('/slackmsg/{id}', 'NotificationContoller@slackmsg');
 
 // -- Este es un middleware que
 Route::group(['middleware' => ['auth']], function () {
