@@ -45,7 +45,7 @@
                             <tr>
                                 <td>{{ $movie->title }}</td>
                                 <td>{{ $movie->rating }}</td>
-                                <td>{{ $movie->release_date }}</td>
+                                <td>{{ $movie->release_date->format('d/m/Y') }}</td>
                                 <td><span class="badge">{{ $movie->awards }}</span></td>
                                 <td>{{ $movie->length }}</td>
                                 <td style="width: 155px">
@@ -82,7 +82,7 @@
                             <tr>
                                 <td>{{ $movie->title }}</td>
                                 <td>{{ $movie->rating }}</td>
-                                <td>{{ $movie->release_date }}</td>
+                                <td>{{ $movie->release_date->format('d/m/Y') }}</td>
                                 <td><span class="badge">{{ $movie->awards }}</span></td>
                                 <td>{{ $movie->length }}</td>
                                 <td  style="width: 155px">

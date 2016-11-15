@@ -104,7 +104,7 @@ class PeliculasController extends Controller
 
             $file = $request->file('cover');
             $filename = str_slug($movie->title).'-'.$movie->id.'.'.$file->extension();
-            $filestorage = $file->storeAs('movies', $filename, 'public');
+            $filestorage = $file->storeAs('movies', $filename, env('PUBLIC_STORAGE', 'public'));
             $movie->cover = $filestorage;
             $movie->save();
 
