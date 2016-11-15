@@ -6,7 +6,7 @@
         <div class="col-md-4 col-md-offset-4">
             <h2>Ingresar Pelicula</h2>
 
-            <form action="/addmovie" class="form" method="post">
+            <form action="/addmovie" class="form" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @if($errors->has('title'))
                     @foreach($errors->get('title') as $error)
@@ -54,6 +54,14 @@
                             <option value="{{ $genero->id }}" @if(old('genre_id') == $genero->id) selected @endif>{{ $genero->name }}</option>
                         @endforeach
                     </select>
+                </div>
+                {{--@if($errors->has('cover'))
+                    @foreach($errors->get('cover') as $error)
+                        <div class="text text-danger">{{ $error }}</div>
+                    @endforeach
+                @endif --}}
+                <div class="form-group @if($errors->has('cover')) has-error @else @endif">
+                    <input class="form-control" type="file" name="cover">
                 </div>
                 <button type="submit" class="btn btn-success center-block">Ingresar</button>
             </form>

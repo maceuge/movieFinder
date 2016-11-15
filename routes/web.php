@@ -22,8 +22,8 @@ Route::get('/movieList', 'PeliculasController@movieList');
 
 // -- ruta agregar pelicula
 Route::get('/addmovieform', 'PeliculasController@addmovieform');
-Route::post('/addmovie', 'PeliculasController@addmovie');
-// Route::post('/addmovie', 'PeliculasController@addmovieRequest');
+//Route::post('/addmovie', 'PeliculasController@addmovie');
+Route::post('/addmovie', 'PeliculasController@addmovieRequest');
 
 // -- ruta que busca las peliculas filtradas por mysql
 Route::get('/searchmovies', 'PeliculasController@searchmovies');

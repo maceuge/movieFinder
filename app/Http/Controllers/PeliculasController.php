@@ -10,6 +10,7 @@ use App\Movie;
 use App\Genre;
 use App\Http\Requests\CreateMovieRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PeliculasController extends Controller
 {
@@ -84,9 +85,9 @@ class PeliculasController extends Controller
 
         // voy a notificar al cliente que se ingreso una nueva pelicula
         $user = Auth::user();
-        $movie = Movie::all();
-        $lastmovie = $movie->last();
-        $user->notify(new Notifnuevapeli($lastmovie));
+        //$movie = Movie::all();
+        //$lastmovie = $movie->last();
+        $user->notify(new Notifnuevapeli($film));
 
         return redirect('/movieList');
         // return redirect()->action('PeliculasController@all'); es solo un ejemplo de redireccionar a otro controller
@@ -95,9 +96,24 @@ class PeliculasController extends Controller
     // funcion simplificada de validar y agregar una pelicula
     // para usarla hay que redirigir las rutas a este controller
     public function addmovieRequest (CreateMovieRequest $request) {
+
         $data = $request->only(['title', 'rating', 'awards', 'release_date', 'length', 'genre_id']);
-        $film = Movie::create($data);
-        $film->save();
+        $movie = Movie::create($data);
+
+        if ($request->hasFile('cover')) {
+
+            $file = $request->file('cover');
+            $filename = str_slug($movie->title).'-'.$movie->id.'.'.$file->extension();
+            $filestorage = $file->storeAs('movies', $filename, 'public');
+            $movie->cover = $filestorage;
+            $movie->save();
+
+           // $filename = $file->store('movies', 'public');
+           // $filename = $file->storeAs('movies', str_slug($film->title).'-'.$film->id.''.$file->extension(),'public');
+          //  $filename = $file->storeAs('movies', $filename, 'public'); otra forma de hacer
+          //  Storage::disk('public')->putFileAs("movies", $file, $filename); // es la forma manual de
+          //  env('PUBLIC_STORAGE'); lo agreg en arch env para luego configurar de ahi en donde quiero guardar mi archov
+        }
         return redirect('/movieList');
     }
 
@@ -170,6 +186,9 @@ class PeliculasController extends Controller
     // funcion que edita la pelicula seleccionada
     public function editado ($id, Request $request) {
         $movie = Movie::find($id);
+
+        //$movie->update
+
         $movie->title = $request->input('title');
         $movie->rating = $request->input('rating');
         $movie->awards = $request->input('awards');
@@ -190,11 +209,9 @@ class PeliculasController extends Controller
     }
 
     public function ordenar ($ord) {
-        //$movie = Movie::all()->sortBy($ord)->paginate(7);
-        $movie = Movie::all()->sortBy($ord);
+        $movie = Movie::orderBy($ord);
         $movie = $movie->paginate(7);
         $generos = Genre::all();
-        //$generos = $generos->paginate(7);
 
         return view('/movies/peliculas', [
             'movies' => $movie,
