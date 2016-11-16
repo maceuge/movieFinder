@@ -160,7 +160,6 @@ class PeliculasController extends Controller
     // funcion editar una pelicula sobre las tablas de los campos
     public function editarlinea ($id) {
         $linea = Movie::find($id);
-        //$movies = Movie::all();
         $movies = Movie::paginate(7);
         $generos = Genre::all();
 
@@ -186,17 +185,16 @@ class PeliculasController extends Controller
     // funcion que edita la pelicula seleccionada
     public function editado ($id, Request $request) {
         $movie = Movie::find($id);
+        $movie->update($request->except('_token', 'cover'));
 
-        //$movie->update
+        if ($request->hasFile('cover')) {
 
-        $movie->title = $request->input('title');
-        $movie->rating = $request->input('rating');
-        $movie->awards = $request->input('awards');
-        $movie->release_date = $request->input('release_date');
-        $movie->length = $request->input('length');
-        $movie->genre_id = $request->input('genre_id');
-
-        $movie->save();
+            $file = $request->file('cover');
+            $filename = str_slug($movie->title).'-'.$movie->id.'.'.$file->extension();
+            $filestorage = $file->storeAs('movies', $filename, env('PUBLIC_STORAGE', 'public'));
+            $movie->cover = $filestorage;
+            $movie->save();
+        }
         return redirect('/movieList');
     }
 

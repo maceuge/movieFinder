@@ -53,6 +53,7 @@ class SlackGenMsg extends Notification
                         'Rating: ' => $this->movie->rating,
                         'Duracion: ' => $this->movie->length,
                         'Awards: ' => $this->movie->awards,
+                        'Cover: ' =>$this->movie->cover,
                     ]);
             });
     }

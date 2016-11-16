@@ -34,6 +34,9 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group @if($errors->has('cover')) has-error @else @endif">
+                    <input class="form-control" type="file" name="cover">
+                </div>
                 <button type="submit" class="btn btn-warning center-block">Modificar</button>
             </form>
              @else

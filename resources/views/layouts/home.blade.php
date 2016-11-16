@@ -35,6 +35,14 @@
         .table-bordered {
             border-color: #636163;
         }
+
+        .paraf {
+            color: #2e3436;
+            font-family: 'Raleway', sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+        }
+
     </style>
     <!-- Scripts -->
     <script>
