@@ -188,7 +188,6 @@ class PeliculasController extends Controller
         $movie->update($request->except('_token', 'cover'));
 
         if ($request->hasFile('cover')) {
-
             $file = $request->file('cover');
             $filename = str_slug($movie->title).'-'.$movie->id.'.'.$file->extension();
             $filestorage = $file->storeAs('movies', $filename, env('PUBLIC_STORAGE', 'public'));

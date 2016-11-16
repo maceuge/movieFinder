@@ -35,7 +35,7 @@ Route::get('/moviedetail/{id}', 'PeliculasController@moviedetail');
 Route::get('/borrar/{id}', 'PeliculasController@borrar');
 Route::get('/editar/{id}', 'PeliculasController@editar');
 Route::get('/editform', function () { return view('movies/editform'); });
-Route::get('/editado/{id}', 'PeliculasController@editado');
+Route::post('/editado/{id}', 'PeliculasController@editado');
 
 // ruta para editar la linea sobre la tabla
 Route::get('/editarlinea/{id}', 'PeliculasController@editarlinea');

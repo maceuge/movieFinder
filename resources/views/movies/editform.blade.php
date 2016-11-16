@@ -6,7 +6,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h2>Editar Pelicula</h2>
             @if(isset($movie))
-            <form action="/editado/{{ $movie->id }}" class="form">
+            <form action="/editado/{{ $movie->id }}" class="form" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <input class="form-control" type="text" name="title" value="{{ $movie->title }}" placeholder="Titulo">
@@ -34,7 +34,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group @if($errors->has('cover')) has-error @else @endif">
+                <div class="form-group {{-- @if($errors->has('cover')) has-error @else @endif --}}">
                     <input class="form-control" type="file" name="cover">
                 </div>
                 <button type="submit" class="btn btn-warning center-block">Modificar</button>

@@ -2,28 +2,28 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
         <div class="col-md-4 col-md-offset-1">
             @if(isset($movie->cover))
-                <img class="img-responsive" src="{{ asset('/'.$movie->cover) }}">
+                <img class="img-responsive" src="{{ asset('/'.$movie->cover) }}" width="300" height="400">
             @else
                 <p>Esta pelicula no tiene imagen asignada</p>
             @endif
         </div>
         <div class="col-md-7">
-            <h1 class="title">Pelicula: {{ $movie->title }}</h1>
-            <p class="paraf">Rating: {{ $movie->rating }}</pcla>
-            <p class="paraf">Awards: {{ $movie->awards }}</p>
-            <p class="paraf">Fecha Lanzamiento: {{ $movie->release_date->format('d-m-Y') }}</p>
-            <p class="paraf">Duracion: {{ $movie->length }}</p>
-            <p class="paraf">Genero: {{ $movie->genre->name }}</p>
-            <p class="paraf">Actores:
+            <h1 class="title">Pelicula: <span class="pardet">{{ $movie->title }}</span></h1>
+            <p class="paraf">Rating: <span class="pardet">{{ $movie->rating }}</span></p>
+            <p class="paraf">Awards: <span class="pardet">{{ $movie->awards }}</span></p>
+            <p class="paraf">Fecha Lanzamiento: <span class="pardet">{{ $movie->release_date->format('d-m-Y') }}</span></p>
+            <p class="paraf">Duracion: <span class="pardet">{{ $movie->length }}</span></p>
+            <p class="paraf">Genero: <span class="pardet">{{ $movie->genre->name }}</span></p>
+            <p class="paraf">Actores: <span class="pardet">
             @forelse($movie->actors as $actor)
                  {{ $actor->first_name .' '. $actor->last_name. ' - '  }}
             @empty
                 No actuo nadie en la pelicula!
             @endforelse
-            </p>
+            </span></p>
         </div>
     </div>
     <div class="row">

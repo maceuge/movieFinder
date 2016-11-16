@@ -9,41 +9,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/moviefinder.css">
     <script src="https://use.fontawesome.com/2cd639662e.js"></script>
-
-    <style>
-        .title {
-            color: #7a43b6;
-            font-family: 'Raleway', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .color {
-            color: #009926;
-        }
-
-        body {
-            background-color: #e2e2e2;
-        }
-        .tithead {
-            color: #0D3349;
-            font-family: 'Raleway', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-        .table-bordered {
-            border-color: #636163;
-        }
-
-        .paraf {
-            color: #2e3436;
-            font-family: 'Raleway', sans-serif;
-            font-size: 19px;
-            font-weight: 600;
-        }
-
-    </style>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

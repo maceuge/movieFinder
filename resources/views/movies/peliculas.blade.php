@@ -8,7 +8,7 @@
                     <i class="fa fa-plus-circle fa-lg"></i>
                 </button>
             </h1>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover table-responsive">
                 <thead class="tithead text-center">
                 <tr>
                     <td>Titulo</td>
@@ -129,7 +129,7 @@
                     <h4 class="modal-title" id="myModalLabel">Ingresar Pelicula</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/addmovie" class="form" method="post">
+                    <form action="/addmovie" class="form" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @if($errors->has('title'))
                             @foreach($errors->get('title') as $error)
@@ -177,6 +177,9 @@
                                     <option value="{{ $genero->id }}" @if(old('genre_id') == $genero->id) selected @endif>{{ $genero->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group {{-- @if($errors->has('cover')) has-error @else @endif --}}">
+                            <input class="form-control" type="file" name="cover">
                         </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
