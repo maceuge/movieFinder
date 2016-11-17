@@ -65,6 +65,8 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ url('/notif') }}"><i class="fa fa-paper-plane"></i> Enviar Notificacion</a></li>
                         <li><a href="{{ url('/notislack') }}"><i class="fa fa-slack"></i> Enviar Slack</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ url('/postform') }}"><i class="fa"></i> Post Event</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url('/bestten') }}"><i class="fa fa-trophy fa-lg"></i> 10 Mejores</a></li>

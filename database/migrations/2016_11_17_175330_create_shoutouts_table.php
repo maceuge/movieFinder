@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRatingColumn extends Migration
+class CreateShoutoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddRatingColumn extends Migration
      */
     public function up()
     {
-        Schema::table('peliculas', function (Blueprint $table) {
-            $table->float('rating', 2, 2);
+        Schema::create('shoutouts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('handle');
+            $table->string('email');
+            $table->text('content');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddRatingColumn extends Migration
      */
     public function down()
     {
-        Schema::table('peliculas', function (Blueprint $table) {
-            $table->dropIfExists('rating');
-        });
+        Schema::dropIfExists('shoutouts');
     }
 }

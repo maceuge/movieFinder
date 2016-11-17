@@ -2,32 +2,30 @@
 
 namespace App\Listeners;
 
-use App\Events\SomeEvent;
+use App\Events\SendMeMail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EventoNuevaPelicula
+class HacerSendMeMail
 {
-
-    protected $movies;
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Movie $movie)
+    public function __construct()
     {
-        $this->movies = $movie;
+        //
     }
 
     /**
      * Handle the event.
      *
-     * @param  SomeEvent  $event
+     * @param  SendMeMail  $event
      * @return void
      */
-    public function handle(SomeEvent $event)
+    public function handle(SendMeMail $event)
     {
-        $event->broadcastOn();
+        //
     }
 }

@@ -7,6 +7,8 @@ Route::get('/notif', 'NotificationContoller@notifMovie');
 Route::get('/notislack', 'NotificationContoller@slackmessage');
 Route::get('/slackmsg/{id}', 'NotificationContoller@slackmsg');
 
+Route::get('/postform', function () { return view('post/post'); });
+
 // -- Este es un middleware que
 Route::group(['middleware' => ['auth']], function () {
 
@@ -76,6 +78,14 @@ Route::get('/home', 'HomeController@index');
 /*Route::group(['middleware' => ['filter_ip']], function () {
     Route::post('/agregar', 'PeliculasController@addFilm');
 });*/  // este es un ejemplo de middleware personal
+
+/*
+ * Documentacion para eventos
+ * https://scotch.io/tutorials/create-a-real-time-shoutbox-with-laravel-events
+ * https://dashboard.pusher.com/
+ * https://laracasts.com/lessons/laravel-5-events
+ *
+ */
 
 
 
