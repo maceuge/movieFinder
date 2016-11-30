@@ -8,6 +8,7 @@ Route::get('/notislack', 'NotificationContoller@slackmessage');
 Route::get('/slackmsg/{id}', 'NotificationContoller@slackmsg');
 
 Route::get('/postform', function () { return view('post/post'); });
+Route::post('/post', 'PeliculasController@posted');
 
 // -- Este es un middleware que
 Route::group(['middleware' => ['auth']], function () {

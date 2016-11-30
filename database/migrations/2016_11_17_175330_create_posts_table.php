@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShoutoutsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateShoutoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shoutouts', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('handle');
+            $table->string('user');
             $table->string('email');
-            $table->text('content');
+            $table->text('post');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateShoutoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shoutouts');
+        Schema::dropIfExists('posts');
     }
 }

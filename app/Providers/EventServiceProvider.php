@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+//use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,7 +17,6 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
             'Illuminate\Auth\Events\Registered', // aqui va la ruta de mi php que tiene lo que va hacer el evento
-            'App\Listeners\EventoEditarPelicula',
             'App\listeners\HacerSendMeMail',
         ],
     ];

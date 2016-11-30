@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendMeMail;
 use App\Notifications\Notifnuevapeli;
 use App\User;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -253,6 +254,11 @@ class PeliculasController extends Controller
         ]);
     }
 
+    // funcion que ejecuta el evento de laravel
+    public function posted (Request $request) {
+        event(new SendMeMail($request));
+        return redirect('/postform');
+    }
 
 
 
